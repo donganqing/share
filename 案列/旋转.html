@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+    body{
+        background:#ccc;
+    }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+        .div1{
+          width: 150px;
+          height:100px;
+          border: 1px solid black;
+          background:url("../img/runman.png") 0 0 no-repeat;
+            -webkit-animation-timing-function:step-end;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-name:running;
+            -webkit-animation-duration:400ms;
+
+        }
+        /* 小人跑的动画 */
+         @-webkit-keyframes running{
+            0%{background-position:0 0;}
+            15%{background-position:-150px 0;}
+            30%{background-position:-300px 0;}
+            45%{background-position:-450px 0;}
+            60%{background-position:-600px 0;}
+            75%{background-position:-750px 0;}
+            100%{background-position:0 0;}
+        }
+        .div2{
+            width: 200px;
+            height:200px;
+            margin:10px;
+            border-radius:50%;
+            -webkit-animation: rotate 3000ms linear;
+            -webkit-animation-iteration-count: infinite;
+            overflow:hidden;
+        }
+        .yang{
+            width: 200px;
+            height:100px;
+            background:white;
+            position:relative;
+        }
+        .yangc{
+             width: 100px;
+             height:100px;
+             border-radius:50%;
+             background:white;
+             position:absolute;
+             left:100px;
+             top:50px;
+             z-index:2;
+        }
+        .yangcd{
+            width:20px;
+            height:20px;
+            position:absolute;
+            left:40px;
+            top:40px;
+            background:black;
+            border-radius:50%;
+        }
+        .yin{
+            width: 200px;
+            height:100px;
+            background:black;
+            position:relative;
+        }
+        .yinc{
+             width: 100px;
+             height:100px;
+             border-radius:50%;
+             background:black;
+             position:absolute;
+             left:0px;
+             top:-50px;
+             z-index:2;}
+        .yincd{
+            width:20px;
+            height:20px;
+            position:absolute;
+            left:40px;
+            top:40px;
+            background:white;
+            border-radius:50%;
+        }
+        /* 旋转动画 */
+        @-webkit-keyframes rotate{
+            0%{
+                -webkit-transform: rotate(0deg) ;}
+            15%{
+                -webkit-transform: rotate(60deg);
+            }
+            30%{
+                -webkit-transform: rotate(120deg);
+            }
+            45%{
+                -webkit-transform: rotate(180deg);
+            }
+            60%{
+                -webkit-transform: rotate(240deg);
+            }
+            75%{
+                -webkit-transform: rotate(300deg);
+            }
+            100%{
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        #div3_box{
+            width: 450px;
+            height:250px;
+            position:relative;
+            box-shadow:0 0 30px #ccc;
+        }
+        .div3{
+            width: 50px;
+            height:50px;
+            border-radius:50%;
+            background: -moz-linear-gradient(top, blue 0%, pink 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,blue), color-stop(100%,pink));
+            background: -webkit-linear-gradient(top, blue 0%,pink 100%);
+            background: -o-linear-gradient(top, blue 0%,pink 100%);
+            background: -ms-linear-gradient(top, blue 0%,pink 100%);
+            background: linear-gradient(to bottom, blue 0%,pink 100%);
+            animation:move 2000ms linear;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction:alternate;
+
+        }
+        /* 小球移动动画 */
+        @-webkit-keyframes move{
+            0%{
+               -webkit-transform: translate(0,0);
+            }
+            12.5%{
+               -webkit-transform: translate(100px,);
+            }
+            25%{
+                -webkit-transform: translate(200px,50px);
+            }
+            50%{
+                -webkit-transform: translate(400px,100px);
+            }
+             75%{
+                -webkit-transform: translate(200px,130px);
+            }
+            100%{
+                -webkit-transform: translate(0,200px);
+            }
+        }
+        #photo_box{
+            width: 600px;
+            height:420px;
+        }
+        #photo_box div{
+            width: 180px;
+            height:120px;
+            margin:10px;
+            box-shadow:0 0 10px #ccc;
+            float:left;
+            overflow:hidden;
+        }
+        #photo_box div img{
+            width: 180px;
+        }
+        #photo_box div img:hover{
+            -webkit-transition: all 1s linear;
+               -moz-transition: all 1s linear;
+                -ms-transition: all 1s linear;
+                 -o-transition: all 1s linear;
+                    transition: all 1s linear;
+            -webkit-transform: scale(1.2, 1.2);
+               -moz-transform: scale(1.2, 1.2);
+                -ms-transform: scale(1.2, 1.2);
+                 -o-transform: scale(1.2, 1.2);
+                    transform: scale(1.2, 1.2);
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel=stylesheet href="../fonts/glyphicons-halflings-regular.woff">
+</head>
+<body>
+    <div id="box">
+        <div class="div1"></div>
+    </div>
+    <div class="div2">
+        <div class="yang">
+            <div class="yangc">
+                <div class="yangcd"></div>
+            </div>
+        </div>
+        <div class="yin">
+            <div class="yinc">
+                <div class="yincd"></div>
+            </div>
+        </div>
+    </div>
+    <div id="div3_box">
+        <div class="div3"></div>
+    </div>
+    <!-- <div id="photo_box">
+        <div><img src="../img/fj1.jpg" alt=""></div>
+        <div><img src="../img/fj2.jpg" alt=""></div>
+        <div><img src="../img/fj3.jpg" alt=""></div>
+        <div><img src="../img/fj4.jpg" alt=""></div>
+        <div><img src="../img/fj5.jpg" alt=""></div>
+        <div><img src="../img/fj6.jpg" alt=""></div>
+        <div><img src="../img/fj7.jpg" alt=""></div>
+        <div><img src="../img/fj8.jpg" alt=""></div>
+        <div><img src="../img/fj9.jpg" alt=""></div>
+    </div> -->
+    <button type="button" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-star"></span> Star
+      <span class="glyphicon glyphicon-home"></span> Home
+    </button>
+</body>
+</html>

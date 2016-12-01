@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+        #div1{
+            width:400px;
+            margin:100px auto;
+            background:#ccc;
+        }
+        .span1{
+            display:inline-block;
+            -webkit-transition: all 3s linear;
+               -moz-transition: all 3s linear;
+                -ms-transition: all 3s linear;
+                 -o-transition: all 3s linear;
+                    transition: all 3s linear;
+
+        }
+        .span1:hover{
+          animation:move 1000ms linear;
+        }
+        @-webkit-keyframes move{
+          0%{-webkit-transform: translateY(0px);}
+          10%{-webkit-transform: translateY(-20px);}
+          50%{-webkit-transform: translateY(-30px);}
+          100%{-webkit-transform: translateY(0px);}
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        var str="闺蜜刚开了家卖衣店，昨天我去她那里唠嗑，然后来了个女的，个子小小的，穿着挺开放。闺蜜让我帮她看着，她去买吃的，她买完回来就问，那小矮子走了没？一看那矮子就不像正经的东西，我刚做了个嘘的手势，矮子从试衣间出来了…"
+        for(var i=0;i<str.length;i++){
+            $("#div1").append("<span class='span1'>"+str[i]+"</span>");
+        }
+    </script>
+</body>
+</html>

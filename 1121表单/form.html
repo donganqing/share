@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>人员表单 </h1>
+	<form id="person">
+	<!-- 第一步 -->
+		<fieldset>
+			<legend>个人信息</legend>
+			<ol>
+				<li>
+					<label for="name">姓名</label>
+					<input id="name" name="name" type="text" placeholder="请输入你的姓名" required autofocus>
+				</li>
+				<li>
+					<label for="email">邮箱</label>
+					<input id="email" name="email" type="email" placeholder="请输入你的邮箱" required>
+				</li>
+				<li>
+					<label for="phone">电话</label>
+					<input id="phone" name="phone" type="tel" placeholder="请输入你的电话" required>
+				</li>
+			</ol>
+		</fieldset>
+		<!-- 第二步 -->
+		<fieldset>
+			<legend>地址</legend>
+			<ol>
+				<li>
+					<label for="address">地址</label>
+					<textarea name="address" id="address" rows="5" required></textarea>
+				</li>
+				<li>
+					<label for="postcode">邮政编码</label>
+					<input id="postcode" name="postcode" type="text" required>
+				</li>
+				<li>
+					<label for="country">城市</label>
+					<input id="country" name="country" type="text" required>
+				</li>
+			</ol>
+		</fieldset>
+		<!-- 第三步 -->
+		<fieldset>
+			<legend>卡信息</legend>
+			<ol>
+				<li>
+					<fieldset>
+						<legend>卡类型</legend>
+						<ol>
+							<li>
+								<input name="cardtype" type="radio" id="visa">
+								<label for="visa">VISA</label>
+							</li>
+							<li>
+								<input name="amex" type="radio" id="amex">
+								<label for="amex">AmEx</label>
+							</li>
+							<li>
+								<input name="cardtype" type="radio" id="mastercard">
+								<label for="mastercard">Mastercard</label>
+							</li>
+						</ol>
+					</fieldset>
+				</li>
+				<li>
+					<label for="cardnumber">卡号</label>
+					<input id="cardnumber" name="cardnumber" type="number" required>
+				</li>
+				<li>
+					<label for="secure">信用卡号</label>
+					<input id="secure" name="secure" type="number" required>
+				</li>
+				<li>
+					<label for="namecard">卡名</label>
+					<input id="namecard" name="namecard" type="text" placeholder="输入卡名" required>
+				</li>
+			</ol>
+		</fieldset>
+		<!-- 提交 -->
+		<fieldset>
+			<button type="submit">提交</button>
+		</fieldset>
+	</form>
+</body>
+</html>

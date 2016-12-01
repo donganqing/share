@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟摩天轮旋转</title>
+	<style>
+	body {
+		background: #000;
+	}
+	div.wrapper{
+		margin: 100px auto;
+		width: 800px;
+		animation: a 1000s;
+		position: relative;
+	}
+	img:nth-child(2){
+		position: absolute;
+		top: 100px;
+		left: 500px;
+		animation: b 1000s;
+		transform-origin:top center;
+	}
+	img:nth-child(3){
+		position: absolute;
+		top: 700px;
+		left: 400px;
+		animation: b 1000s;
+		transform-origin:top center;
+	}
+	img:nth-child(4){
+		position: absolute;
+		top: 300px;
+		left: 0px;
+		animation: b 1000s;
+		transform-origin:top center;
+	}
+	img:nth-child(6){
+		position: absolute;
+		top: 120px;
+		left: 150px;
+		animation: b 1000s;
+		transform-origin:top center;
+	}
+	img:nth-child(5){
+		position: absolute;
+		top: 600px;
+		left: 80px;
+		animation: b 1000s;
+		transform-origin:top center;
+	}
+	img:nth-child(7){
+		position: absolute;
+		top: 400px;
+		left: 650px;
+		animation: b 1000s;
+		transform-origin:top center;
+	}
+	@keyframes a{
+		from{transform: rotate(0deg)}
+		to{transform: rotate(36000deg)}
+	}
+	@keyframes b{
+
+	}from{transform: rotate(0deg)}
+	to{transform: rotate(-36000deg)}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<img src="images/fsw.png">
+		<img src="images/boy.png">
+		<img src="images/girl.png">
+        <img src="images/shamegirl.png">
+        <img src="images/boy.png">
+        <img src="images/girl.png">
+        <img src="images/shamegirl.png">
+	</div>
+</body>
+</html>

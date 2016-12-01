@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding:0}
+			body{
+				background: black;
+				-webkit-user-select: none;
+				user-select:none;/*去除选中*/
+				color: white;
+				/*perspective-origin:left bottom ;*/
+			}
+			#box{
+				width:133px;
+				height:200px;
+				position: relative;
+				margin:100px auto;
+				transform-style: preserve-3d;
+				transform: perspective(800px) rotateY(30deg);
+				background:red
+			}
+			#box img{
+				position: absolute;
+				-webkit-box-reflect: below 10px -webkit-linear-gradient(top,rgba(0,0,0,0) 50%,rgba(0,0,0,0.7) 100%);
+			}
+			
+			/*#box img:nth-child(1){
+				transform: rotateY(0deg) translateZ(300px);
+			}
+			#box img:nth-child(2){
+				transform: rotateY(36deg) translateZ(300px);
+			}
+			#box img:nth-child(3){
+				transform: rotateY(72deg) translateZ(300px);
+			}
+			#box img:nth-child(4){
+				transform: rotateY(108deg) translateZ(300px);
+			}
+			#box img:nth-child(5){
+				transform: rotateY(144deg) translateZ(300px);
+			}
+			#box img:nth-child(6){
+				transform: rotateY(180deg) translateZ(300px);
+			}
+			#box img:nth-child(7){
+				transform: rotateY(216deg) translateZ(300px);
+			}
+			#box img:nth-child(8){
+				transform: rotateY(252deg) translateZ(300px);
+			}
+			#box img:nth-child(9){
+				transform: rotateY(288deg) translateZ(300px);
+			}
+			#box img:nth-child(10){
+				transform: rotateY(324deg) translateZ(300px);
+			}*/
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			<img src="img/11.jpg" />
+			<img src="img/12.jpg" />
+			<img src="img/13.jpg" />
+			<img src="img/14.jpg" />
+			<img src="img/15.jpg" />
+			<img src="img/16.jpg" />
+			<img src="img/17.jpg" />
+			<img src="img/18.jpg" />
+			<img src="img/19.jpg" />
+			<img src="img/20.jpg" />
+		</div>
+		
+		
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			var imgs = document.getElementsByTagName("img");
+			var length = imgs.length;
+			var r = 360/length;
+			var stepX = null;
+			var stepY = null;
+			var rosX = null;
+			var rosY = null;
+			
+			for(var i=0;i<length;i++)
+			{
+				var str = "rotateY("+r*i+"deg) translateZ(300px)";
+				cssTransform(imgs[i],str);
+			}
+			
+			function cssTransform(obj,str){
+				var arr = ["webkit","moz","o","ms",""];
+				
+				for(var i=0;i<arr.length;i++)
+				{
+					//obj.style.webkitTransform = str;
+					obj.style[arr[i]+"Transform"] = str;
+				}
+			}
+			/*去除默认的拖拽事件*/
+			document.ondragstart = function(){
+				return false;
+			}
+			
+			
+			document.onmousedown = function(event){
+				var mosX = event.clientX;
+				var mosY = event.clientY;
+				
+				document.onmousemove = function(event){
+					var mouseX = event.clientX;
+					var mouseY = event.clientY;
+					
+					stepX = mouseX - mosX;
+					stepY = mouseY - mosY;
+					
+					rosX -= stepY*0.1;
+					rosY += stepX*0.1;
+					
+					var str = "perspective(800px) rotateX("+rosX+"deg) rotateY("+rosY+"deg)"
+					cssTransform(box,str);
+					
+					mosX = mouseX;
+					mosY = mouseY;
+				}
+			}
+			
+			document.onmouseup = function(){
+				document.onmousemove = function(){
+					return false;
+				}
+			}
+
+			
+			
+		</script>
+	</body>
+</html>

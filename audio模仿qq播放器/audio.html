@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		*{
+			margin:0;padding:0;
+		}
+			.box{
+				width:500px;
+				height:300px;
+				border:1px solid #ddd;
+				border-radius: 20px;
+				margin:50px auto;
+				background-color: #000;
+				box-shadow: 5px 5px 10px #000;
+			}
+			.box .top{
+				width:100%;
+				height:100px;
+			}
+			.box .top input:first-child{
+				width:100px;
+				height:100px;
+				font-size: 40px;
+				background-color: gold;
+				border-radius: 50px;
+				box-shadow: 10px 10px 10px #000;
+			}
+			.box .top .top-right{
+				float: right;
+				width:350px;
+				text-align: center;
+			}
+			.box .top .top-right p{
+				line-height: 40px;
+				font-size: 30px;
+				border:3px dashed #FFD700;
+				border-radius: 20px;
+				box-shadow: 5px 5px 2px #000;
+				background-color: #A9A9A9
+			}
+			.box .top .top-right input{
+				width:50px;
+				height:20px;
+				border-radius: 10px;
+				margin-top:10px;
+				background-color: darkgray;
+				box-shadow:5px 5px 5px  #000000;
+				
+			}
+			.box .bottom{
+				margin:30px auto;
+				width:300px;
+				height:50px;
+				padding:0
+			}
+			.box .bottom input{
+				width:100%;
+				height:100%;
+				line-height:50px;
+				font-size: 20px;
+				text-align: center;
+				border-radius: 25px;
+				padding: 0 10px;
+				margin: 50px 150px 0 0;
+			}
+			@-webkit-keyframes xz{
+				0%{transform: rotate(0deg)}
+				100%{transform: rotate(360deg)}
+			}
+			.box .bottom b{
+				display: block;
+				width:50px;
+				height:50px;
+				border-radius: 25px;
+				position:relative;
+				background:#fff;
+				border:5px dashed #000;
+				/*transition: 3s;*/
+				-webkit-animation: xz 3s  linear 0s infinite  ;
+			}
+			
+			.box .bottom b.b1{
+				top:-110px;
+				left:-50px;
+			}
+			.box .bottom b.b2{
+				top:-170px;
+				left:300px;
+			}
+			#jdt{
+				width:300px;
+				margin:10px auto;
+				border:1px solid #000;
+				height:20px;border-radius: 10px;
+			}
+			#jdtSpan{
+				display: block;
+				height:20px;
+				width:0px;
+				background-color: #A52A2A;
+				border-radius: 10px;
+			}
+			#roolLrc{
+				width:280px;
+				height:500px;
+				background-color: #FF7066;
+				color:#000000;
+				position:fixed;
+				right:80px;
+				top:50px;
+				overflow: auto;
+				border-radius: 125px;
+				box-shadow: 10px 10px 10px #000000;
+				overflow-y: hidden;
+				padding-bottom: 150px;
+				box-sizing: border-box;
+			}
+			#roolLrc li{
+				list-style: none;
+				width:100%;
+				height:30px;
+				line-height:30px;
+				text-align: center;
+				/*text-shadow: 0px 0px 2px #FFFFFF;*/
+			}
+			
+			@-webkit-keyframes animate{/*声明动画*/
+				0%{
+					box-shadow: 5px 5px 10px #000;
+				}			
+				100%{
+					box-shadow: 10px 10px 50px #000;
+				}
+			}
+			.box{
+				-webkit-animation-name: animate;/*调用动画名*/
+				-webkit-animation-duration: 1.5s;/*动画执行时间*/
+				-webkit-animation-iteration-count: infinite;/*动画重复执行*/
+				-webkit-animation-direction: alternate;/*规定动画是否在下一周期逆向地播放*/
+				
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="top">
+				<input type="button" name="" value="开始" id="startPlay" class="startPlay" />
+				<div class="top-right">
+					<p>薛之谦--刚刚好</p>
+					<input type="button" name="" value="加速" id="up" class="up"/>
+					<input type="button" name=""  value="减速" id="down"class="down" />
+					<input type="button" name=""  value="静音" id="noSpeak" class="noSpeak" />
+					<p id="jdt"><span id="jdtSpan"></span></p>
+					
+				</div>
+			</div>
+			<div class="bottom">
+				<input type="text" name="" value="歌词区域" id="txt" /><b class="b1"></b>
+					<b class="b2"></b>
+			</div>
+		</div>
+		
+	</body>
+		<script type="text/javascript">
+			var audio = new Audio();
+			audio.src = "src/薛之谦 - 刚刚好.mp3";
+			$(".startPlay").click(function(){
+				if(audio.paused){
+					audio.play();
+					$(".startPlay").val("暂停");
+				}else{
+					audio.pause();
+					$(".startPlay").val("开始")
+				}
+			})
+			$("#jdt").mousedown(function(){
+				$(this).mousemove(function(e){
+					var e = e || window.event;
+					var left = e.offsetX  ; //	- $("#jdt").offset().left;
+					//console.log(left);
+					jdtSpan.style.width = left + "px";
+					var prop = left / 300;
+					  audio.currentTime = audio.duration * prop;
+					//audio.currentTime = audio.duration * prop ;
+					//console.log(audio.currentTime +"--"+prop +"-----"+  parseInt(audio.duration))
+				})
+			})
+			
+			/*
+			muted---静音---返回值true静音/false
+			volume-----音量--可设置
+			duration------音频总长度
+			timeupdate---时间发生改变
+			currentTime--------获取音频时间--可设置
+			*/
+			$(document).on('mouseup',function(){
+				$("#jdt").off('mousemove');
+			})
+			audio.ontimeupdate = function(){
+				//alert(1)
+				var prop = audio.currentTime / audio.duration
+				var em = prop * 300
+				//console.log(prop)
+				jdtSpan.style.width =em + "px";
+			};
+			up.onclick = function(){
+				
+				if(audio.playbackRate <4){
+				audio.playbackRate = ++audio.playbackRate
+				}else{
+					alert("播放速度过快")
+					audio.playbackRate = 1;
+				}//console.log(audio.playbackRate)
+			}
+			down.onclick = function(){
+				
+				var em = audio.playbackRate  - 0.5
+				audio.playbackRate = em;//console.log(audio.playbackRate)
+			}
+			noSpeak.onclick = function(){
+				if(audio.muted){
+					audio.muted = false
+				}else{
+					audio.muted = true
+				}
+			}
+			$.get("./src/ggh.lrc",function(data){
+				showLrc(getLrc(data));
+			});
+			//封装函数把歌词lrc文件转成时间个对应歌词的数组
+			function getLrc(data){
+				//1---把歌词通过换行符拆分成数组
+				var textArr = data.split("\r\n");   //根据回车符和换行符把歌词拆分成数组
+				//声明空数组
+				var lrcArr = [];
+				for(var i in textArr){
+					//2---把歌词时间拆分出来
+					var time = textArr[i].match(/\[\d{2}:\d{2}(:|\.)\d{2}\]/g);
+					console.log(time);
+					if(time != null){
+						//3--把时间对应歌词拆分出来
+						console.log(textArr[i].split(time))
+						var lrcTxt = textArr[i].split(time)[1];
+						console.log(lrcTxt);
+						//4--把时间的分钟数取出来
+						var nMinute =parseInt(time[0].split("[")[1].split("\:")[0]);
+						console.log(nMinute);
+						//5--把时间的秒数取出来
+						var nSecond = parseInt(time[0].split(":")[1].split("]")[0])
+						console.log(nSecond)
+						//6--把时间换算成秒数
+						var nResTime = nSecond + nMinute*60;
+						console.log(nResTime)
+						//7--在上面声明一个空数组---把时间信息和歌词信息匹配添加数组
+						lrcArr.push([nResTime,lrcTxt]);
+						console.log(lrcArr)
+						
+					}
+				}
+				//8--结束----调用函数返回值为数组lrcArr
+				return lrcArr;
+			}
+			//封装函数动态添加歌词
+			function showLrc(lrcArr){
+				audio.ontimeupdate = function(){
+					for(var i in lrcArr){
+						if(parseInt(this.currentTime) == lrcArr[i][0]){
+							txt.value = lrcArr[i][1]
+						}
+					}
+					var prop = audio.currentTime / audio.duration;
+					var em = prop * 300;
+					//console.log(prop)
+					jdtSpan.style.width =em + "px";
+				}
+			}
+			
+		</script>
+</html>

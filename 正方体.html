@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.main{
+				width: 500px;
+				height: 500px;
+				margin:300px auto;
+				
+				
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				animation: name 5s infinite linear;
+				transform-style: preserve-3d;
+			}
+			.box>div{
+				width: 200px;
+				height: 200px;
+				background:orangered;
+				opacity: .5;
+				position: absolute;
+				border: 1px solid #00FFFF;
+				color:white;
+				text-align: center;
+				line-height: 200px;
+			}
+			@keyframes name{
+				from{}
+				to{
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+			.box span:nth-child(7){
+				transform: translateZ(50px);
+			}
+			.box span:nth-child(8){
+				transform: translateZ(-50px);
+			}
+			.box span:nth-child(9){
+				transform: translateX(-50px) rotateY(90deg);
+			}
+			.box span:nth-child(10){
+				transform: translateX(50px) rotateY(90deg);
+			}
+			.box span:nth-child(11){
+				transform: translateY(-50px) rotateX(90deg);
+			}
+			.box span:nth-child(12){
+				transform: translateY(50px) rotateX(90deg);
+			}
+			
+			.box:hover span:nth-child(7){
+				transform: translateZ(100px);
+			}
+			.box:hover span:nth-child(8){
+				transform: translateZ(-100px);
+			}
+			.box:hover span:nth-child(9){
+				transform: translateX(-100px) rotateY(90deg);
+			}
+			.box:hover span:nth-child(10){
+				transform: translateX(100px) rotateY(90deg);
+			}
+			.box:hover span:nth-child(11){
+				transform: translateY(-100px) rotateX(90deg);
+			}
+			.box:hover span:nth-child(12){
+				transform: translateY(100px) rotateX(90deg);
+			}
+			.box>span{
+				width: 100px;
+				height: 100px;
+				background:lightcyan;
+				margin-left: 50px;
+				margin-top: 50px;
+				position: absolute;
+				opacity: .7;
+				color:blue;
+				text-align: center;
+				line-height: 100px;
+			}
+			@keyframes name{
+				from{}
+				to{
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+			.box div:nth-child(1){
+				transform: translateZ(100px);
+			}
+			.box div:nth-child(2){
+				transform: translateZ(-100px);
+			}
+			.box div:nth-child(3){
+				transform: translateX(-100px) rotateY(90deg);
+			}
+			.box div:nth-child(4){
+				transform: translateX(100px) rotateY(90deg);
+			}
+			.box div:nth-child(5){
+				transform: translateY(-100px) rotateX(90deg);
+			}
+			.box div:nth-child(6){
+				transform: translateY(100px) rotateX(90deg);
+			}
+			.box:hover div:nth-child(1){
+				transform: translateZ(200px);
+			}
+			.box:hover div:nth-child(2){
+				transform: translateZ(-200px);
+			}
+			.box:hover div:nth-child(3){
+				transform: translateX(-200px) rotateY(90deg);
+			}
+			.box:hover div:nth-child(4){
+				transform: translateX(200px) rotateY(90deg);
+			}
+			.box:hover div:nth-child(5){
+				transform: translateY(-200px) rotateX(90deg);
+			}
+			.box:hover div:nth-child(6){
+				transform: translateY(200px) rotateX(90deg);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="box">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+					<p></p>
+			</div>
+		</div>
+	</body>
+</html>

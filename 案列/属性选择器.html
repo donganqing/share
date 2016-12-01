@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            text-align:center;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+        div{
+            width:100px;
+            height:100px;
+            background:red;
+            margin:10px auto;
+        }
+        div[type="长方形"]{
+            width:200px;
+        }
+        div[type="圆形"]{
+            border-radius:50%;
+        }
+        div[type="椭圆"]{
+            width:200px;
+            border-radius:100px/50px;
+        }
+         div[type="三角形"]{
+            width:0;
+            height:0;
+            border-left:50px solid white;
+             border-right:50px solid white;
+             border-bottom:100px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1" type="正方形"></div>正方形
+    <div class="div1" type="长方形"></div>长方形
+    <div class="div1" type="圆形"></div>圆形
+    <div class="div1" type="椭圆"></div>椭圆
+    <div class="div1" type="三角形"></div>三角形
+    <div class="div1" type="对话框"></div>对话框
+    <div class="div1" type="八卦"></div>八卦
+</body>
+</html>

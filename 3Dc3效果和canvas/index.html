@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ANIMATED OPENING TYPE</title>
+<style type="text/css">
+.box-warp ul li {float:left;list-style:none;}
+/* 字体样式 */
+.box-warp ul li span{
+    display: inline-block;
+    font-size:150px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    position: relative;
+    left:20px;
+    color: hsla(0, 0%, 0%, 0.6);
+    -webkit-transform-style: preserve-3d;
+    perspective: 550px;
+    z-index: 1;}
+    /* 翻转字体 */
+.box-warp ul li span::before,
+.box-warp ul li span::after{
+    position:absolute;
+    line-height:inherit;
+    content:attr(data-letter);
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index: 2;
+    -webkit-transition: all 0.3s;
+    }
+
+.box-warp ul li span::before {
+    text-shadow: none;
+    color: hsla(0, 0%, 0%, 0.12);
+}
+
+.box span::before,
+.box span::after {
+    -webkit-transform-origin: 0 50%;
+}
+.box span::before {
+    -webkit-transform: scale(1.08, 1) skew(0deg, 1deg);
+}
+
+.box span::after {
+    text-shadow:
+        -1px 0px 0px hsla(360, 100%, 100%, 0.1),
+        3px 0px 1px hsla(0, 0%, 0%, 0.4);
+    -webkit-transform: rotateY(-15deg);
+}
+/* 移入是前面的旋转40  后面缩小 翻转20 */
+.box:hover span::before {
+    -webkit-transform: scale(0.85,1) skew(0deg,20deg);
+}
+.box:hover span::after {
+    -webkit-transform: rotateY(-40deg);
+}
+
+/* 字体背景 和阴影 */
+.box {
+    background: #e74d3c;
+}
+
+.box span {
+    text-shadow:
+        1px 2px 4px #e74d3c,
+         0 0 0 hsla(0, 0%, 0%, 0.3),
+        1px 2px 4px #e74d3c;
+}
+
+.box span::after {
+    color: #e74d3c;
+}
+
+.box:hover span::after {
+    color: #ea6253;
+}
+
+</style>
+</head>
+<body style="background:#1B191A;">
+<div  class="box-warp" style="margin:100px  200px;">
+         <ul>
+                <li class="box" ><span data-letter="I">I</span></li>
+                <li class="box"><span data-letter="W">WANT</span></li>
+                <li class="box"><span data-letter="Y">YOU</span></li>
+        </ul>
+ </div>
+</body>
+</html>

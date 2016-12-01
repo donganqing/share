@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正方体展开到旋转</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#view{
+				perspective: 500px;/*规定3D元素透视效果*/
+			}
+
+			@keyframes scroll{
+				100%{transform: rotate3d(1,1,1,360deg);}/*旋转中心点*/
+			}
+			#cube{
+				position: relative;
+				width: 200px;
+				height:200px;
+				margin: 200px auto;
+				perspective-origin: 250px -50px;/*规定 3D 元素的底部位置*/
+				animation: scroll 2s linear 7s infinite;
+				transform-style: preserve-3d;/*规定被嵌套元素在 3D 空间中显示。*/
+			}
+			.item{
+				width:200px;
+				height:200px;
+				position: absolute;
+				opacity:0.75;
+				text-align: center;
+				background: rgb(0,148,255);
+				font-size: 30px;
+				font-weight: bold;
+				color: #000;
+				line-height: 200px;
+			}
+			/*展开*/
+			/*-------左边--------*/
+			@keyframes item1{
+				100%{transform:rotateY(-90deg);}/*控制旋转度*/
+			}
+			#item1{
+				z-index: 6;
+				transform-origin: left;
+				animation:item1 1s linear 1s both;/*控制旋转时间过渡 both：动画时间之外的状态*/
+			}
+			/*-------右边--------*/
+			@keyframes item2{
+				100%{transform:rotateY(90deg);}
+			}
+			#item2{
+				z-index: 5;
+				transform-origin: right;
+				animation:item2 1s linear 2s both;
+			}
+			/*-------上面--------*/
+			@keyframes item3{
+				100%{transform:rotateX(90deg);}
+			}
+			#item3{
+				z-index: 4;
+				transform-origin: top;
+				animation:item3 1s linear 3s both;
+			}
+			/*-------底部--------*/
+			@keyframes item4{
+				100%{transform:rotateX(-90deg);}
+			}
+			#item4{
+				z-index: 3;
+				transform-origin: bottom;
+				animation:item4 1s linear 4s both;
+			}
+			/*-------前面--------*/
+			@keyframes item5{
+				100%{transform:translateZ(200px);}/*沿着Z方向平移*/
+			}
+			#item5{
+				z-index: 2;
+				animation:item5 1s linear 5s both;
+			}
+			/*-------后面--------*/
+			@keyframes item6{
+				100%{transform:rotateY(180deg);}/*原地旋转*/
+			}
+			#item6{
+				z-index: 1;
+				animation:item6 1s linear 6s both;
+				color: orangered;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="view">
+			<div id="cube">
+				<div class="item" id="item1">左边</div>
+				<div class="item" id="item2">右边</div>
+				<div class="item" id="item3">上面</div>
+				<div class="item" id="item4">底部</div>
+				<div class="item" id="item5">前面</div>
+				<div class="item" id="item6">后面</div>
+			</div>
+		</div>
+	</body>
+</html>

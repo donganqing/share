@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+
+    </style>
+</head>
+<body>
+    <canvas id="hb1" width="540px" height="540px">
+    </canvas>
+    <script>
+        var canvasDom=document.getElementById("hb1");
+        var context=canvasDom.getContext("2d");
+        context.beginPath();
+        context.moveTo(40,40);
+        context.lineTo(40,500);
+        context.lineTo(500,500);
+        context.stroke();
+        //Y轴坐标
+        function YY(){
+            context.beginPath();
+            for(var i=0;i<9;i++){
+                context.moveTo(40,450-i*50);
+                context.lineTo(30,450-i*50);
+                context.fillText((i+1)*50,10,450-i*50+3);
+            }
+            context.moveTo(40,40);
+            context.lineTo(35,45);
+            context.moveTo(40,40);
+            context.lineTo(45,45);
+            context.stroke();
+        }
+        YY();
+        //X轴坐标
+        function XX(){
+            context.beginPath();
+            for(var i=0;i<4;i++){
+                context.moveTo((i+1)*100+40,500);
+                context.lineTo((i+1)*100+40,510);
+            }
+            context.moveTo(500,500);
+            context.lineTo(495,505);
+            context.moveTo(500,500);
+            context.lineTo(495,495);
+            context.stroke();
+        }
+        XX();
+        //0点画个圆
+        context.beginPath();
+        //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+        context.arc(40,500,1,0,2*Math.PI);
+        context.stroke();
+        //context.fillRect(x,y,width,height);
+        context.beginPath();
+        var Color=["#00ffff","pink","yellow","#F210DD"];
+        var Index=[{"name":"商品1","value":300},{"name":"商品2","value":400},{"name":"商品3","value":350},{"name":"商品4","value":200}]
+        for(var i=0;i<Index.length;i++){
+            context.fillStyle="black";
+            context.fillText(Index[i].name,(i+1)*100+25,520);
+            context.fillStyle=Color[i];
+            context.fillRect((i+1)*100+10,500-Index[i].value-1,60,Index[i].value);
+            if(i==0){
+                 context.moveTo((i+1)*100+40,500-Index[i].value-1-40);
+            }else{
+                 context.lineTo((i+1)*100+40,500-Index[i].value-1-40);
+            }
+        }
+        context.stroke();
+        for(var i=0;i<Index.length;i++){
+            context.beginPath();
+            context.arc((i+1)*100+40,500-Index[i].value-1-40,4,0,2*Math.PI);
+            context.fillStyle=Color[i];
+            context.fill();
+            context.closePath();
+        }
+    </script>
+</body>
+</html>

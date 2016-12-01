@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+        a{
+            text-decoration:none;
+            color:black;
+        }
+        .floatl{
+            float:left;
+        }
+        #header{
+            width: 100%;
+            height:50px;
+            background:#FD6405;
+            line-height:50px;
+            text-align:center;
+            font-size:45px;
+            color:white;
+            font-weight:bold;
+        }
+        #footer{
+            width: 100%;
+            height:50px;
+            background:#FD6405;
+            line-height:50px;
+            text-align:center;
+            font-size:45px;
+            color:white;
+            font-weight:bold;
+        }
+        #main{
+            padding:10px;
+            width: 100%;
+            height:420px;
+            background:#1f1f1f;
+        }
+        #main section{
+            width:25%;
+            height:auto;
+        }
+        #main .main_mid section{
+            width:95%;
+            margin:20px 0;
+            background:#ccc;
+            padding:10px 10px;
+        }
+        #main .main_mid{
+            width:50%;
+        }
+        .main_left article{
+            text-align:center;
+            line-height:60px;
+            color:white;
+            font-size:30px;
+            font-weight:bolder;
+        }
+        .main_left ul{
+            padding:0 30px;
+        }
+        .main_left ul li{
+            height:60px;
+            border-bottom:3px solid white;
+            line-height:60px;
+        }
+        .main_left ul li a{
+            color:#FD6405;
+        }
+        .main_mid h2{
+            height:30px;
+            background:#FD6405;
+            line-height:30px;
+            text-align:center;
+            color:white;
+            margin:10px 0;
+        }
+        .main_right h2{
+            height:30px;
+            line-height:30px;
+            color:white;
+            text-align:center;
+            margin-top:20px;
+        }
+        .main_right{
+            font-size:20px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="">
+        <h2>Header</h2>
+    </header>
+    <section id="main">
+        <section class="main_left floatl">
+            <article>
+                <h2>nav</h2>
+            </article>
+            <nav class="navlist">
+                <ul>
+                    <li><a href="#">nav1</a></li><!--
+                 --><li><a href="#">nav2</a></li><!--
+                 --><li><a href="#">nav3</a></li><!--
+                 --><li><a href="#">nav4</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="main_mid floatl">
+            <section>
+                <article>
+                    <h2>Article Header</h2>
+                </article>
+                <p>Lorem ipsum dolor HTML5 nunc aut nunquam sit amet, consectetur adipiscing elit. Vivamus at est eros, vel fringilla urna.<br /><br />
+                Per inceptos himenaeos. Quisque feugiat, justo at vehicula pellentesque, turpis lorem dictum nunc.</p>
+                <article>
+                    <h2>Article Footer</h2>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <h2>Article Header</h2>
+                </article>
+                <p>HTML5: "Lorem ipsum dolor nunc aut nunquam sit amet, consectetur adipiscing elit. Vivamus at est eros, vel fringilla urna. Pellentesque odio</p>
+                <article>
+                    <h2>Article Footer</h2>
+                </article>
+            </section>
+        </section>
+        <section class="main_right floatl">
+            <aside>
+                <h2>Aside</h2>
+                <p><mark>HTML5:</mark>"Lorem ipsum dolor nunc aut nunquam sit amet, consectetur adipiscing elit. Vivamus at est eros, vel fringilla urna. Pellentesque odio rhoncus</p>
+            </aside>
+        </section>
+    </section>
+    <footer id="footer">
+        <h2>Footer</h2>
+    </footer>
+</body>
+</html>

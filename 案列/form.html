@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>H5表单</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+        #form{
+            width:300px;
+            height:500px;
+            margin:100px auto;
+        }
+        .form_left{
+            display:inline-block;
+            height:20px;
+            line-height:20px;
+            width:80px;
+            float: left;
+            text-align:right;
+        }
+        input{
+            float: left;
+            border:1px solid black;
+            height:18px;
+        }
+    </style>
+</head>
+<body>
+    <section id="form">
+        <form action="form_submit" method="get" accept-charset="utf-8">
+            <fieldset>
+                <legend>用户信息</legend>
+                <br />
+                <section class="form_left">
+                    用户名：
+                </section>
+                <input type="text" name="userName" placeholder="请输入英文或数字6-9位用户名" required="required" autofocus autocomplete><br /><br />
+                <section class="form_left">
+                    密码：
+                </section>
+                <input type="password" name="userPassword" placeholder="请输入英文或数字6-9位密码" required="required" required="required"><br /><br />
+                 <section class="form_left">
+                    手机号：
+                </section>
+                <input type="tel" name="tel" placeholder="131 xxxx xxxx" required="required"><br /><br />
+                <section class="form_left">
+                    邮箱：
+                </section>
+                <input type="email" name="email" placeholder="xxxx@xxx.com" required="required"><br /><br />
+            </fieldset>
+            <fieldset>
+                <legend>家庭信息</legend>
+                <br />
+                <section class="form_left">
+                    家庭地址：
+                </section>
+                <textarea name="address" cols="20" rows="5" required="required"></textarea>
+                <br /><br />
+                <section class="form_left">
+                    邮编：
+                </section>
+                <input type="postcode" name="postcode" placeholder="请输入您当地的邮编" required="required" ><br /><br />
+                 <section class="form_left">
+                    手机号：
+                </section>
+                <input type="tel" name="tel" placeholder="131 xxxx xxxx" required="required"><br /><br />
+                <section class="form_left">
+                    邮箱：
+                </section>
+                <input type="email" name="email" placeholder="xxxx@xxx.com" required="required"><br /><br />
+            </fieldset>
+                <input type="submit" name="submit" value="登录" required="required"><br /><br />
+        </form>
+
+
+    </section>
+</body>
+</html>

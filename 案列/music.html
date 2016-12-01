@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>音乐播放器</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+        html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+        a,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strong,
+        sub,sup,var,b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,
+        caption,tbody, tfoot,thead,tr,th,td,article,aside,canvas,details,embed,
+        figure,figcaption,footer,header,menu,nav,output,ruby,section,summary,
+        time,mark,audio,video
+        {
+            margin:0;
+            padding:0;
+            border:0;
+            font-size:100%;
+            font:inherit;
+            vertical-align:baseline;
+        }
+        .wrap{
+            width:500px;
+            height:700px;
+            margin:auto;
+            background:#ff6;
+        }
+        .wrap img{
+            width:300px;
+            height:300px;
+            border:10px solid #eee;
+            border-radius:50%;
+            padding:5px;
+            background:#fff;
+            margin:82px;
+            -webkit-animation: move 500s linear;
+            -webkit-transform-origin:50% 50%;
+               -moz-transform-origin:50% 50%;
+                -ms-transform-origin:50% 50%;
+                 -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+            transform:rotateY(130deg);
+            -webkit-transform:rotateY(130deg); /* Safari and Chrome */
+            -moz-transform:rotateY(130deg); /* Firefox */
+        }
+        @-webkit-keyframes move{
+            from{
+                -webkit-transform: rotate(0);
+                   -moz-transform: rotate(0);
+                    -ms-transform: rotate(0);
+                     -o-transform: rotate(0);
+                        transform: rotate(0);
+            }
+            to{
+                -webkit-transform: rotate(72000deg);
+                   -moz-transform: rotate(72000deg);
+                    -ms-transform: rotate(72000deg);
+                     -o-transform: rotate(72000deg);
+                        transform: rotate(72000deg);
+            }
+        }
+        .wrap a{
+            font-size:2em;
+            margin-left:220px;
+            display: block;
+            width:50px;
+            height:50px;
+            color:#999;
+            border:2px solid #999;
+            text-align: center;
+            line-height:50px;
+            border-radius:50%;
+            text-decoration:none;
+            cursor:pointer;
+        }
+        .music-wrap{
+            width:500px;
+            margin:10px 0;
+            position:relative;
+            height:27px;
+        }
+        .playbg{
+            width:300px;
+            position:absolute;
+            font-size:1.5em;
+            color:#9ff;
+            z-index: 0;
+            text-shadow:2px 2px 3px #aaa;
+        }
+        .playup{
+            position:absolute;
+            left:0;
+            width:0;
+            height:27px;
+            overflow:hidden;
+            display: inline-block;
+        }
+        .playmusic{
+            width:300px;
+            color:#0f0;
+            font-size:1.5em;
+            text-shadow:2px 2px 3px pink;
+        }
+        .pre{
+            color:#0f0;
+        }
+        p{
+            width:500px;
+            height:27px;
+            font-size:14px;
+            text-align:center;
+            margin:20px 0;
+            color:#9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="../img/yiwai.jpg" alt="" />
+        <audio id="music" src="薛之谦 - 你还要我怎样.mp3" controls="controls"></audio>
+        <a id="play" class="glyphicon glyphicon-play"></a>
+        <p class="pre"></p>
+        <div class="music-wrap">
+            <div class="playbg"></div>
+            <div class="playup">
+                <div class="playmusic"></div>
+            </div>
+        </div>
+        <p class="after"></p>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+         var music={
+            get:function(id){
+              return document.getElementById(id);
+            }
+        };
+        var timer = null;
+        var flag = false;
+        var first=0;
+        $("#play").on("click",function(){
+            first++;
+            playtime(playword(arrword[index]),playword(arrword[index+1]));
+            if(first==1){
+                play();
+            }
+            if($(this).hasClass("glyphicon-play")){
+                music.get("music").play();
+                $(this).addClass("glyphicon-pause").removeClass("glyphicon-play");
+                flag=true;
+            }else{
+                 music.get("music").pause();
+                 flag=false;
+                 $(this).removeClass("glyphicon-pause").addClass("glyphicon-play");
+            }
+        })
+        var index=0;
+        function play(){
+            var sec=0;
+            var Timer2=setInterval(function(){
+                console.log(flag);
+                if(flag){
+                    var objpre = playword(arrword[index]);
+                    var objafter=playword(arrword[index+1]);
+                    sec+=100;
+                    if(sec>objafter.times){
+                        index++;
+                        console.log(objpre);
+                        console.log(objafter);
+                        playtime(playword(arrword[index]),playword(arrword[index+1]));
+                    }
+                }
+            },100)
+        }
+        function playtime(objpre,objafter){
+
+            timer=setTimeout(function(){
+                    $(".playbg").html(objpre.words);
+                    $(".playmusic").html(objpre.words);
+                    $(".playup,.playbg").css({"left":(502-objpre.words.length*24)/2+"px"});
+                    $(".playup").width(0).stop().animate({
+                        width: objpre.words.length*27
+                    },objafter.times-objpre.times);
+            },0);
+            /*if(objpre.times > 207042){
+                $(".start")[0].pause();
+                $(this).addClass('icon-play').removeClass('icon-pause');
+                clearTimeout(timer);
+            }*/
+        }
+        function playword(words){
+            if(words == undefined) return null;
+            var str = words.split("]")
+            var word = str.pop();
+            var times = str.shift().split("[").pop();
+            var timesecond = Number(times.split(":").shift()) * 60000;
+            var seconds = times.split(":").pop();
+            var sec=Number(times.split(":")[0])*60+Number(times.split(":")[1].split(".").shift());
+            seconds = seconds.split(".");
+            timesecond = timesecond + Number(seconds.shift()) * 1000 + Number(seconds.pop());
+            return {
+                times : timesecond,
+                words : word,
+                sec:sec
+            }
+        }
+        var arrword=["[00:00.81]你还要我怎样 - 薛之谦",
+"[00:02.57]词：薛之谦",
+"[00:03.43]曲：薛之谦",
+"[00:24.89]你停在了这条我们熟悉的街",
+"[00:34.82]把你准备好的台词全念一遍",
+"[00:42.49]我还在逞强 说着谎",
+"[00:46.99]也没能力遮挡 你去的方向",
+"[00:52.73]至少分开的时候我落落大方",
+"[01:04.65]我后来都会选择绕过那条街",
+"[01:14.55]又多希望在另一条街能遇见",
+"[01:22.17]思念在逞强 不肯忘",
+"[01:26.72]怪我没能力跟随 你去的方向",
+"[01:32.53]若越爱越被动 越要落落大方",
+"[01:42.15]你还要我怎样 要怎样",
+"[01:46.82]你突然来的短信就够我悲伤",
+"[01:51.81]我没能力遗忘 你不用提醒我",
+"[01:57.06]哪怕结局就这样",
+"[02:01.91]我还能怎样 能怎样",
+"[02:06.79]最后还不是落得情人的立场",
+"[02:11.91]你从来不会想 我何必这样",
+"[02:44.54]我慢慢的回到自己的生活圈",
+"[02:54.59]也开始可以接触新的人选",
+"[03:02.51]爱你到最后 不痛不痒",
+"[03:07.26]留言在计较 谁爱过一场",
+"[03:12.68]我剩下一张 没后悔的模样",
+"[03:22.17]你还要我怎样 要怎样",
+"[03:26.78]你千万不要在我婚礼的现场",
+"[03:31.90]我听完你爱的歌 就上了车",
+"[03:37.52]爱过你很值得",
+"[03:41.95]我不要你怎样 没怎样",
+"[03:46.96]我陪你走的路你不能忘",
+"[03:52.02]因为那是我 最快乐的时光",
+"[04:04.44]后来我的生活还算理想",
+"[04:14.56]没为你落到孤单的下场",
+"[04:22.54]有一天晚上 梦一场",
+"[04:27.15]你白发苍苍 说带我流浪",
+"[04:33.21]我还是没犹豫 就随你去天堂",
+"[04:42.88]不管能怎样 我能陪你到天亮"]
+    </script>
+</body>
+</html>
